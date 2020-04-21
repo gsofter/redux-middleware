@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions'
 import * as api from '../lib/api'
+import createRequestThunk from '../lib/createRequestThunk'
 
 // Action types
 const GET_POST = 'sample/GET_POST'
@@ -12,41 +13,8 @@ const GET_USERS_FAILURE = 'sample/GET_USERS_FAILURE'
 
 // thunk functions
 
-export const getPost = (id) => async (dispatch) => {
-  dispatch({ type: GET_POST })
-  try {
-    const response = await api.getPost(id)
-    dispatch({
-      type: GET_POST_SUCCESS,
-      payload: response.data,
-    })
-  } catch (e) {
-    dispatch({
-      type: GET_POST_FAILURE,
-      payload: e,
-      error: true,
-    }) // Error
-    throw e // Error
-  }
-}
-
-export const getUsers = () => async (dispatch) => {
-  dispatch({ type: GET_USERS }) // Start request
-  try {
-    const response = await api.getUsers()
-    dispatch({
-      type: GET_USERS_SUCCESS,
-      payload: response.data,
-    }) // 요청 성공
-  } catch (e) {
-    dispatch({
-      type: GET_USERS_FAILURE,
-      payload: e,
-      error: true,
-    }) // Error
-    throw e //
-  }
-}
+export const getPost = createRequestThunk(GET_POST, api.getPost)
+export const getUsers = createRequestThunk(GET_USERS, api.getUsers)
 
 const initialState = {
   loading: {
