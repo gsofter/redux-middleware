@@ -25,7 +25,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <CounterContainer />
+        <SampleContainer />
       </div>
     </Provider>
   )
