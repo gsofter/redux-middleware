@@ -7,12 +7,11 @@ import rootReducer from './modules'
 import { composeWithDevTools } from 'redux-devtools-extension'
 // import loggerMiddleware from './lib/loggerMiddleware'
 import { createLogger } from 'redux-logger'
+import ReduxThunk from 'redux-thunk'
+
 const logger = createLogger()
 
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(logger)),
-)
+const store = createStore(rootReducer, applyMiddleware(logger, ReduxThunk))
 
 function App() {
   return (
