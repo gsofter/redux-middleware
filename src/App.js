@@ -8,6 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 // import loggerMiddleware from './lib/loggerMiddleware'
 import { createLogger } from 'redux-logger'
 import ReduxThunk from 'redux-thunk'
+import SampleContainer from './containers/SampleContainer'
 
 const logger = createLogger()
 
@@ -17,7 +18,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <CounterContainer />
+        <SampleContainer />
       </div>
     </Provider>
   )
