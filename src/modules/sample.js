@@ -27,13 +27,6 @@ const initialState = {
 
 const sample = handleActions(
   {
-    [GET_POST]: (state) => ({
-      ...state,
-      loading: {
-        ...state.loading,
-        GET_POST: true,
-      },
-    }),
     [GET_POST_SUCCESS]: (state, action) => ({
       ...state,
       loading: {
@@ -42,20 +35,6 @@ const sample = handleActions(
       },
       post: action.payload,
     }),
-    [GET_POST_FAILURE]: (state, action) => ({
-      ...state,
-      loading: {
-        ...state.loading,
-        GET_POST: false, // Complete
-      },
-    }),
-    [GET_USERS]: (state) => ({
-      ...state,
-      loading: {
-        ...state.loading,
-        GET_USERS: true, // start
-      },
-    }),
     [GET_USERS_SUCCESS]: (state, action) => ({
       ...state,
       loading: {
@@ -63,13 +42,6 @@ const sample = handleActions(
         GET_USERS: false, // finish
       },
       users: action.payload,
-    }),
-    [GET_USERS_FAILURE]: (state, action) => ({
-      ...state,
-      loading: {
-        ...state.loading,
-        GET_USERS: false, // finish
-      },
     }),
   },
   initialState,
