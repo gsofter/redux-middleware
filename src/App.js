@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import CounterContainer from './containers/CounterContainer'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './modules'
+import { composeWithDevTools } from 'redux-devtools-extension'
+const store = createStore(rootReducer, composeWithDevTools())
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Provider store={store}>
+      <div className="App">
+        <CounterContainer />
+      </div>
+    </Provider>
+  )
 }
 
-export default App;
+export default App
